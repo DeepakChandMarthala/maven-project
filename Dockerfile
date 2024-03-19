@@ -38,6 +38,7 @@ WORKDIR /app
 
 # Run Maven build
 RUN mvn clean install
+RUN mvn package
 
 # Your further Dockerfile instructions...
 
