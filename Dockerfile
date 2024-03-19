@@ -4,7 +4,7 @@ FROM tomcat:latest
 # Set the working directory to /usr/local/tomcat
 WORKDIR /usr/local/tomcat
 
- ADD pom.xml .
+ COPY pom.xml .
  RUN apt-get update && \
      apt-get install -y maven && \
      mvn clean package
