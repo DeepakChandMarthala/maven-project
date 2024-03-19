@@ -39,9 +39,8 @@ WORKDIR /app
 # Run Maven build
 RUN mvn clean install
 RUN mvn package
-RUN ls -l
-RUN cd webapp/target/
-RUN ls -l
+RUN ls -l webapp/target/
+
 RUN pwd
 #COPY ${WORKSPACE}/webapp/target/**.*war /opt/tomcat/webapps
 EXPOSE 8085
