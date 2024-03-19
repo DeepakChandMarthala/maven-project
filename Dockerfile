@@ -8,10 +8,13 @@ RUN apt-get update && apt-get install -y git
  RUN apt-get update && \
      apt-get install -y maven 
 
-RUN git clone https://github.com/Abhi96chawla/maven-project.git  /usr/local/tomcat
- WORKDIR /usr/local/tomcat
- COPY pom.xml .
+RUN mkdir /app
+WORKDIR /app
  RUN mvn clean package
+COPY . .
+ #WORKDIR /usr/local/tomcat
+
+
 # Copy your WAR file from the local filesystem into the container at /usr/local/tomcat/webapps
 #COPY target/**.*war webapps/
 
