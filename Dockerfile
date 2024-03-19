@@ -40,7 +40,7 @@ WORKDIR /app
 RUN mvn clean install
 RUN mvn package
 RUN ls -l webapp/target/
-COPY webapp/target/**.*war /opt/tomcat/webapps
+COPY webapp/target/*.war /opt/tomcat/webapps
 RUN pwd
 #COPY ${WORKSPACE}/webapp/target/**.*war /opt/tomcat/webapps
 EXPOSE 8085
