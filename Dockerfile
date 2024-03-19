@@ -7,6 +7,8 @@ WORKDIR /usr/local/tomcat
  COPY pom.xml .
  RUN apt-get update && \
      apt-get install -y maven 
+
+ RUN mvn clean package
 # Copy your WAR file from the local filesystem into the container at /usr/local/tomcat/webapps
 #COPY target/**.*war webapps/
 
