@@ -39,6 +39,8 @@ WORKDIR /app
 # Run Maven build
 RUN mvn clean install
 RUN mvn package
+
+COPY ${WORKSPACE}/webapp/target/**.*war /opt/tomcat/webapps
 EXPOSE 8085
 CMD ["catalina.sh", "run"]
 # Your further Dockerfile instructions...
