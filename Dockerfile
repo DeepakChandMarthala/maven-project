@@ -12,7 +12,7 @@ WORKDIR /app
 RUN mvn clean install
 RUN mvn package
 RUN ls -l webapp/target/
-RUN ls -l /usr/local/tomcat/webapps
+#RUN ls -l /usr/local/tomcat/webapps
 
 FROM tomcat:latest
 COPY --from=build /app/webapp/target/*.war /usr/local/tomcat/webapps/
