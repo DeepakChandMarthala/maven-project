@@ -15,6 +15,7 @@ RUN ls -l webapp/target/
 #RUN ls -l /usr/local/tomcat/webapps
 
 FROM tomcat:latest
+RUN sed -i 's/8080/8000/' /usr/local/tomcat/conf/server.xml
 COPY --from=build /app/webapp/target/*.war /usr/local/tomcat/webapps/
 #COPY webapp/target/*.war /usr/local/tomcat/webapps
 RUN pwd
