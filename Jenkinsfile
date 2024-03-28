@@ -28,7 +28,7 @@ pipeline {
             }
                     stage("Deploying") {
             steps {
-                sh 'sudo docker run --name ${CONTAINER_NAME} -p 8000:8000 -d registry '
+                sh 'sudo docker run --name ${CONTAINER_NAME} -p 5000:5000 -d registry '
             }
   
             }
