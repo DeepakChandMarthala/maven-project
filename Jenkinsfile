@@ -19,13 +19,13 @@ pipeline {
             stage("Building") {
             steps {
                 sh 'sudo chmod 666 /var/run/docker.sock'
-                sh 'docker build -t ${env.registry} .'
+                sh 'docker build -t "${env.registry}" .'
             }
   
             }
                     stage("Deploying") {
             steps {
-                sh 'sudo docker run --name ${CONTAINER_NAME} -p 5000:5000 -d ${env.registry} '
+                sh 'sudo docker run --name ${CONTAINER_NAME} -p 5000:5000 -d "${env.registry}" '
             }
   
             }
