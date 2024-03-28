@@ -21,8 +21,9 @@ pipeline {
             sh 'sudo chmod 666 /var/run/docker.sock'
             script {
                             
-          dockerImage = docker.build ${env.registry} + ":$BUILD_NUMBER"
+         
         }
+                sh 'docker build -t ${env.registry} .'
             }
   
             }
