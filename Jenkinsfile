@@ -2,6 +2,9 @@ pipeline {
     agent any
         environment {
         CONTAINER_NAME = "mycontainer-${BUILD_ID}" // Using BUILD_ID as a dynamic part of the container name
+        DOCKER_HUB_USERNAME="abhishekcha"
+        IMAGE_NAME="docker-repo-cicd"
+        IMAGE_TAG="latest"
     }
     stages {
         stage("Git CheckOut") {
@@ -18,12 +21,9 @@ pipeline {
                 sh """
                         #!/bin/bash
                     sudo chmod 666 /var/run/docker.sock
-                    DOCKER_HUB_USERNAME="abhishekcha"
-                    IMAGE_NAME="docker-repo-cicd"
-                    IMAGE_TAG="latest"
                     
                     // Build Docker image with dynamically generated unique name
-                       docker build -t $DOCKER_HUB_USERNAME/$IMAGE_NAME:$IMAGE_TAG .
+                       docker build -t ${DOCKER_HUB_USERNAME}/${IMAGE_NAME}:${IMAGE_TAG} .
                  """
             }
   
