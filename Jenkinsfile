@@ -17,9 +17,14 @@ pipeline {
             steps {
                 sh """
                         #!/bin/bash
-                        
-                       sudo chmod 666 /var/run/docker.sock
-                       docker build -t ${CONTAINER_NAME} .
+                    sudo chmod 666 /var/run/docker.sock
+                    def baseName = "myimage"
+                    def timestamp = new Date().format("yyyyMMddHHmmss")
+                    def imageName = "${baseName}-${timestamp}"
+                    
+                    // Build Docker image with dynamically generated unique name
+                       docker build -t ${imageName} .
+                       
                  """
             }
   
