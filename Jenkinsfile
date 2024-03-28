@@ -18,13 +18,12 @@ pipeline {
                 sh """
                         #!/bin/bash
                     sudo chmod 666 /var/run/docker.sock
-                    def baseName = "myimage"
-                    def timestamp = new Date().format("yyyyMMddHHmmss")
-                    def imageName = "${baseName}-${timestamp}"
+                    DOCKER_HUB_USERNAME="abhishekcha"
+                    IMAGE_NAME="docker-repo-cicd"
+                    IMAGE_TAG="latest"
                     
                     // Build Docker image with dynamically generated unique name
-                       docker build -t ${imageName} .
-                       
+                       docker build -t $DOCKER_HUB_USERNAME/$IMAGE_NAME:$IMAGE_TAG .
                  """
             }
   
