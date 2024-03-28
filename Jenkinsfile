@@ -21,14 +21,14 @@ pipeline {
             sh 'sudo chmod 666 /var/run/docker.sock'
             script {
                             
-          dockerImage = docker.build $registry + ":$BUILD_NUMBER"
+          dockerImage = docker.build $env.registry + ":$BUILD_NUMBER"
         }
             }
   
             }
                     stage("Deploying") {
             steps {
-                sh 'sudo docker run --name ${CONTAINER_NAME} -p 5000:5000 -d $registry '
+                sh 'sudo docker run --name ${CONTAINER_NAME} -p 5000:5000 -d $env.registry '
             }
   
             }
