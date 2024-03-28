@@ -3,6 +3,7 @@ pipeline {
         environment {
        CONTAINER_NAME = "mycontainer-${BUILD_ID}" // Using BUILD_ID as a dynamic part of the container name
        registry = "abhishekcha/docker-test"
+       tag = "v1"
        registryCredential = 'dockerhub'
        dockerImage = ''
     }
@@ -19,13 +20,13 @@ pipeline {
             stage("Building") {
             steps {
                 sh 'sudo chmod 666 /var/run/docker.sock'
-                sh 'docker build -t ${registry} .'
+                sh 'docker build -t ${registry}:${tag} .'
             }
   
             }
                     stage("Deploying") {
             steps {
-                sh 'sudo docker run --name ${CONTAINER_NAME} -p 5000:5000 -d ${registry} '
+                sh 'sudo docker run --name ${CONTAINER_NAME} -p 8000:8000 -d ${registry}:${tag} '
             }
   
             }
