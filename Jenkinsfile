@@ -23,14 +23,14 @@ pipeline {
                     sudo chmod 666 /var/run/docker.sock
                     
                     // Build Docker image with dynamically generated unique name
-                       docker build -t ${DOCKER_HUB_USERNAME}/${IMAGE_NAME}:${IMAGE_TAG} .
+                     sudo docker build -t ${DOCKER_HUB_USERNAME}/${IMAGE_NAME}:${IMAGE_TAG} .
                  """
             }
   
             }
                     stage("Deploying") {
             steps {
-                sh 'docker run --name ${CONTAINER_NAME} -p 8000:8000 -d demo '
+                sh 'sudo docker run --name ${CONTAINER_NAME} -p 8000:8000 -d demo '
             }
   
             }
