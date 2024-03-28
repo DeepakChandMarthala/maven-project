@@ -19,7 +19,7 @@ pipeline {
                         #!/bin/bash
                         
                        sudo chmod 666 /var/run/docker.sock
-                       docker build -t demo .
+                       docker build -t ${CONTAINER_NAME} .
                  """
             }
   
