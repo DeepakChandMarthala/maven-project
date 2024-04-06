@@ -7,7 +7,7 @@ RUN git clone https://github.com/Abhi96chawla/maven-project.git /app
 
 # Change directory to the project root
 WORKDIR /app
-
+# forked
 # Run Maven build
 RUN mvn clean install
 RUN mvn package
