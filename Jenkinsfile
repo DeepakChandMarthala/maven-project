@@ -12,7 +12,8 @@ pipeline {
             steps {
                 echo "retriving Code.."
 
-                git 'https://github.com/Abhi96chawla/maven-project.git'
+                //git 'https://github.com/Abhi96chawla/maven-project.git' 
+                git 'https://github.com/DeepakChandMarthala/maven-project.git'
                 
             }
             }
