@@ -74,14 +74,14 @@ pipeline {
                 }
             }
         }
-    }
-}
+    
 
-   /*    stage("Push Docker Image to Registry") {
+
+       stage("Push Docker Image to Registry") {
             steps {
                 echo "Pushing Docker Image to Registry.."
                 script {
-                    withCredentials([usernamePassword(credentialsId: "${REGISTRY_CREDENTIAL}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    withCredentials([usernamePassword(credentialsId: "${correct-credential-id}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh "docker login -u ${USERNAME} -p ${PASSWORD}"
                     }
                     sh "docker push ${DOCKER_IMAGE}"
@@ -97,4 +97,4 @@ pipeline {
         }
     }
 }
-*/
+
