@@ -4,7 +4,7 @@ WORKDIR /app
 
 # Clone the Git repository
 # RUN git clone https://github.com/Abhi96chawla/maven-project.git /app
-RUN git clone https://https://github.com/DeepakChandMarthala/maven-project.git /app
+RUN git clone https://github.com/DeepakChandMarthala/maven-project.git /app
 
 # Change directory to the project root
 WORKDIR /app
