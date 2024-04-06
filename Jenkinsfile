@@ -74,8 +74,9 @@ pipeline {
                 }
             }
         }
-
-        stage("Push Docker Image to Registry") {
+    }
+}
+/*        stage("Push Docker Image to Registry") {
             steps {
                 echo "Pushing Docker Image to Registry.."
                 script {
@@ -95,4 +96,4 @@ pipeline {
         }
     }
 }
-
+*/
