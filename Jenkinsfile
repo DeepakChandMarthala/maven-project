@@ -1,4 +1,4 @@
-pipeline {
+/*pipeline {
     agent any
         environment {
        CONTAINER_NAME = "mycontainer-${BUILD_ID}" // Using BUILD_ID as a dynamic part of the container name
@@ -19,7 +19,8 @@ pipeline {
             }
     }
 }
-/*pipeline {
+*/
+pipeline {
     agent any
         environment {
        CONTAINER_NAME = "mycontainer-${BUILD_ID}" // Using BUILD_ID as a dynamic part of the container name
@@ -57,4 +58,4 @@ pipeline {
         }
 }
 
-*/
+
