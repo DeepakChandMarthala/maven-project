@@ -74,8 +74,8 @@ pipeline {
                 }
             }
         }
-    
-
+    }
+    }
 
    /*    stage("Push Docker Image to Registry") {
             steps {
