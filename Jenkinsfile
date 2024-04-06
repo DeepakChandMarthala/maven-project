@@ -2,7 +2,7 @@ pipeline {
     agent any
         environment {
        CONTAINER_NAME = "mycontainer-${BUILD_ID}" // Using BUILD_ID as a dynamic part of the container name
-       registry = "abhishekcha/docker-test"
+       registry = "deepakchandmarthala/maven-project"
        tag = "v1"
        registryCredential = 'dockerhub'
        dockerImage = ''
