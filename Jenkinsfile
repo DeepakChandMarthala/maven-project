@@ -56,8 +56,8 @@ pipeline {
     
     post {
         always {
-            echo "Cleaning up..."
-            sh "docker logout"
+                    echo "Cleaning up..."
+                    sh "docker logout"
                 }
         }
     }
