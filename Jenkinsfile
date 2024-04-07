@@ -75,7 +75,9 @@ sshagent(credentials: ['Tomcat-Server']) {
             whoami && \
             echo logged into the node-server && \
             ls && \
-            ./script.sh'
+            pwd && \
+            ./script.sh
+            '
             
         '''
     }
