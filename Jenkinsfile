@@ -1,11 +1,12 @@
+
 pipeline {
     agent any
 
     environment {
-        CONTAINER_NAME = "mycontainer-${BUILD_ID}" // Using BUILD_ID as a dynamic part of the container name
+        CONTAINER_NAME = "mycontainer-${BUILD_ID}"
         REGISTRY = "deepakchandmarthala/maven-project"
         TAG = "v1"
-        REGISTRY_CREDENTIAL = 'dockerhub'
+        REGISTRY_CREDENTIAL = 'docker-hub'
         DOCKER_IMAGE = ''
     }
 
@@ -33,23 +34,22 @@ pipeline {
                 }
             }
         }
-        
-        stage("Deploying Docker Container") {
+
+        stage("Login to Docker Registry") {
             steps {
-                echo "Deploying Docker Container.."
-                sh "docker run -d --name ${CONTAINER_NAME} -p 8006:8006 ${DOCKER_IMAGE}"
+                echo "Logging in to Docker Registry.."
+                script {
+                    withCredentials([usernamePassword(credentialsId: "${REGISTRY_CREDENTIAL}", usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                        sh "echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin"
+                    }
+                }
             }
         }
 
         stage("Push Docker Image to Registry") {
             steps {
                 echo "Pushing Docker Image to Registry.."
-                script {
-                    withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                        sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} ${REGISTRY}"
-                        sh "docker push ${DOCKER_IMAGE}"
-                    }
-                }
+                sh "docker push ${DOCKER_IMAGE}"
             }
         }
     }
