@@ -8,8 +8,8 @@
 <body>
     <h2>Simple Calculator</h2>
     <form method="post">
-        <input type="number" name="num1" placeholder="Enter first number" required><br>
-        <input type="number" name="num2" placeholder="Enter second number" required><br>
+        <input type="number" name="num1" placeholder="Enter the first number" required><br>
+        <input type="number" name="num2" placeholder="Enter the second number" required><br>
         <select name="operator">
             <option value="add">+</option>
             <option value="subtract">-</option>
