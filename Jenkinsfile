@@ -8,6 +8,8 @@ pipeline {
         TAG = "v1"
         REGISTRY_CREDENTIAL = 'docker-hub'
         DOCKER_IMAGE = ''
+        DOCKER_USERNAME = 'deepakchandmarthala'
+        PASSWORD = 'Deepak@240199'
     }
 
     stages
