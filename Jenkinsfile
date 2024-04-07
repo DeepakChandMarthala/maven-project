@@ -77,14 +77,14 @@ pipeline {
         stage("Deploying Docker Container") {
             steps {
                 echo "Deploying Docker Container.."
-                sh "docker run -d --name ${CONTAINER_NAME} -p 8005:8005 ${DOCKER_IMAGE}"
+                sh "docker run -d --name ${CONTAINER_NAME} -p 8006:8006 ${DOCKER_IMAGE}"
             }
         }
 
-    }
-    }
+    
+    
 
-/*       stage("Push Docker Image to Registry") {
+       stage("Push Docker Image to Registry") {
             steps {
                 echo "Pushing Docker Image to Registry.."
                 script {
@@ -104,4 +104,4 @@ pipeline {
         }
     }
 }
-*/
+
