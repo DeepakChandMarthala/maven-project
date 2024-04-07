@@ -92,7 +92,7 @@ sshagent(credentials: ['Tomcat-Server']) {
         always {
                     echo "Cleaning up..."
                     sh "docker logout"
-                    sh "docker system prune -a"
+                    sh "docker system prune -a | echo 'y'"
                 }
         }
 }
