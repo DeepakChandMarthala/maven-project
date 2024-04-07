@@ -46,16 +46,17 @@ pipeline {
                 }
             }
         }
-
-        stage("Push Docker Image to Registry") {
+       
+        stage("Push Docker Image to Registry") 
+        {
             steps {
                 echo "Pushing Docker Image to Registry.."
                 sh "docker push ${DOCKER_IMAGE}"
-            }
+                  }
         }
-    }
-       /*stage('Deploy image on EC2')
-    {
+       
+        stage('Deploy image on EC2')
+        {
         steps 
         {
             script 
@@ -69,7 +70,7 @@ pipeline {
             // Pull Docker image
             sshagent(credentials: ['Tomcat-Server']) 
                 {
-    withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) 
+                        withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) 
                     {
                         sh 
                         '''
@@ -85,8 +86,8 @@ pipeline {
                 }
             }
         }
-    }*/
-
+    }
+    
     post {
         always {
             echo "Cleaning up..."
