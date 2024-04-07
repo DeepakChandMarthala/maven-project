@@ -77,7 +77,7 @@ pipeline {
         stage("Deploying Docker Container") {
             steps {
                 echo "Deploying Docker Container.."
-                sh "docker run -d --name ${CONTAINER_NAME} -p 8004:8004 ${DOCKER_IMAGE}"
+                sh "docker run -d --name ${CONTAINER_NAME} -p 8005:8005 ${DOCKER_IMAGE}"
             }
         }
 
