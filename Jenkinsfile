@@ -13,16 +13,17 @@ pipeline {
     stages
     {
        stage("Git Checkout") 
-        
+        {
             steps {
                 echo "Retrieving Code.."
                 git 'https://github.com/DeepakChandMarthala/maven-project.git'
-            }
+                }
         }
 
         stage("Build Maven Project") 
         {
-            steps {
+            steps 
+            {
                 echo "Building Maven Project.."
                 sh "mvn clean package"
             }
@@ -42,7 +43,8 @@ pipeline {
             steps {
                 echo "Logging in to Docker Registry.."
                 script {
-                    withCredentials([usernamePassword(credentialsId: "${REGISTRY_CREDENTIAL}", usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                    withCredentials([usernamePassword(credentialsId: "${REGISTRY_CREDENTIAL}", usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) 
+                    {
                         sh "echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin"
                     }
                 }
@@ -56,6 +58,7 @@ pipeline {
                 sh "docker push ${DOCKER_IMAGE}"
                   }
         }
+    }
 
     post {
         always {
@@ -63,5 +66,5 @@ pipeline {
                     sh "docker logout"
                 }
         }
-    }
 }
+
