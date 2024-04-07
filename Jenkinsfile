@@ -58,6 +58,38 @@ pipeline {
                 sh "docker push ${DOCKER_IMAGE}"
                   }
         }
+
+        stage ("Deploy in EC2")
+        {
+            steps
+            {
+                script
+                {
+                    withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) 
+                    {
+                        sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
+                    }
+
+                sshagent(credentials: ['Tomcat-Server']) 
+                    {
+                        withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) 
+                        {
+                            sh 
+                            '''
+                            ssh -v -o StrictHostKeyChecking=no -l ubuntu 54.144.81.109 \
+                            'uname -a && \
+                            whoami && \
+                            echo logged into the node-server && \
+                            ls && \
+                            docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && \
+                            docker pull deepakchandmarthala/maven-project:v1'
+                            '''
+                        }
+                    }
+                }
+            }
+        }
+        
     }
 
     post {
