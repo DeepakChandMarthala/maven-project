@@ -76,7 +76,7 @@ pipeline {
                         {
                             sh 
                             '''
-                            ssh -v -o StrictHostKeyChecking=no -l ubuntu 54.144.81.109 \
+                            ssh -v -o StrictHostKeyChecking=no -l ubuntu 18.210.19.3 \
                             'uname -a && \
                             whoami && \
                             echo logged into the node-server && \
