@@ -3,7 +3,8 @@ pipeline {
     agent any
         environment {
        CONTAINER_NAME = "mycontainer-${BUILD_ID}" // Using BUILD_ID as a dynamic part of the container name
-       registry = "deepakchandmarthala/maven-project"
+       DOCKER_REGISTRY = "deepakchandmarthala/maven-project"
+       DOCKER_IMAGE = "maven-project"
        tag = "v1"
        registryCredential = 'dockerhub'
        dockerImage = ''
@@ -88,8 +89,8 @@ pipeline {
             steps {
                 echo "Pushing Docker Image to Registry.."
                 script {
-                    withCredentials([usernamePassword(credentialsId: "${correct-credential-id}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                        sh "docker login -u ${USERNAME} -p ${PASSWORD}"
+                withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                        sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} ${DOCKER_REGISTRY}"
                     }
                     sh "docker push ${DOCKER_IMAGE}"
                 }
