@@ -53,7 +53,7 @@ pipeline {
             }
         }
     }
-stage('Deploy image on EC2') {
+/*stage('Deploy image on EC2') {
     steps {
         script {
             // Docker login
@@ -77,7 +77,7 @@ stage('Deploy image on EC2') {
 }
         }
     }
-}
+}*/
 
     post {
         always {
