@@ -51,7 +51,7 @@ pipeline {
             }
         }
 
-        stage("Push Docker Image to Registry") 
+        /*stage("Push Docker Image to Registry") 
         {
             steps {
                 echo "Pushing Docker Image to Registry.."
@@ -70,7 +70,7 @@ pipeline {
                         sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
                     }
 
-                sshagent(credentials: ['Tomcat-Server']) 
+                    sshagent(credentials: ['Tomcat-Server']) 
                     {
                         withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) 
                         {
@@ -88,7 +88,7 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
         
     }
 
