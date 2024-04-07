@@ -53,7 +53,7 @@ pipeline {
                   }
         }
        
-        stage('Deploy image on EC2')
+        /*stage('Deploy image on EC2')
         {
         steps 
         {
@@ -84,7 +84,7 @@ pipeline {
                 }
             }
         }
-    }
+    }*/
     
     post {
         always {
