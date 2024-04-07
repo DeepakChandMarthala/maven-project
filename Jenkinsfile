@@ -1,7 +1,8 @@
 pipeline {
     agent any
 
-    environment {
+    environment 
+    {
         CONTAINER_NAME = "mycontainer-${BUILD_ID}"
         REGISTRY = "deepakchandmarthala/maven-project"
         TAG = "v1"
@@ -9,15 +10,18 @@ pipeline {
         DOCKER_IMAGE = ''
     }
 
-    stages {
-        stage("Git Checkout") {
+    stages
+    {
+       stage("Git Checkout") 
+        
             steps {
                 echo "Retrieving Code.."
                 git 'https://github.com/DeepakChandMarthala/maven-project.git'
             }
         }
 
-        stage("Build Maven Project") {
+        stage("Build Maven Project") 
+        {
             steps {
                 echo "Building Maven Project.."
                 sh "mvn clean package"
@@ -44,7 +48,7 @@ pipeline {
                 }
             }
         }
-       
+
         stage("Push Docker Image to Registry") 
         {
             steps {
@@ -52,8 +56,7 @@ pipeline {
                 sh "docker push ${DOCKER_IMAGE}"
                   }
         }
-       
-    
+
     post {
         always {
                     echo "Cleaning up..."
