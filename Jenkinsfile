@@ -59,7 +59,7 @@ pipeline {
                   }
         }
 
-        stage ("Deploy in EC2")
+        /*stage ("Deploy in EC2")
         {
             steps
             {
@@ -90,7 +90,7 @@ pipeline {
             }
         }
         
-    }
+    }*/
 
     post {
         always {
