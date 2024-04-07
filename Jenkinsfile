@@ -5,7 +5,7 @@ pipeline {
     {
         CONTAINER_NAME = "mycontainer-${BUILD_ID}"
         REGISTRY = "deepakchandmarthala/maven-project"
-        TAG = "v1"
+        TAG = "latest"
         REGISTRY_CREDENTIAL = 'docker-hub'
         DOCKER_IMAGE = ''
         DOCKER_USERNAME = 'deepakchandmarthala'
@@ -75,8 +75,8 @@ sshagent(credentials: ['Tomcat-Server']) {
             whoami && \
             echo logged into the node-server && \
             ls && \
-            docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && \
-            docker pull your_docker_image:tag'
+            ./script.sh'
+            
         '''
     }
 }
