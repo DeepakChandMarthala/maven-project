@@ -21,5 +21,5 @@ COPY --from=build /app/webapp/target/*.war /usr/local/tomcat/webapps/
 #COPY webapp/target/*.war /usr/local/tomcat/webapps
 RUN pwd
 
-EXPOSE 8060
+EXPOSE 8050
 CMD ["catalina.sh", "run"]
