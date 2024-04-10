@@ -1,25 +1,8 @@
-FROM maven:3.8.3-jdk-11 AS build
+FROM node:20.11.1-alpine3.19
+WORKDIR node-app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD ["npm", "start"]
 
-WORKDIR /app
-
-# Clone the Git repository
-# RUN git clone https://github.com/Abhi96chawla/maven-project.git /app
-RUN git clone https://github.com/DeepakChandMarthala/maven-project.git /app
-
-# Change directory to the project root
-WORKDIR /app
-
-# Run Maven build
-RUN mvn clean install
-RUN mvn package
-RUN ls -l webapp/target/
-#RUN ls -l /usr/local/tomcat/webapps
-
-FROM tomcat:latest
-RUN sed -i 's/8060/8060/' /usr/local/tomcat/conf/server.xml
-COPY --from=build /app/webapp/target/*.war /usr/local/tomcat/webapps/
-#COPY webapp/target/*.war /usr/local/tomcat/webapps
-RUN pwd
-
-EXPOSE 8060
-CMD ["catalina.sh", "run"]

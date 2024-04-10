@@ -22,15 +22,6 @@ pipeline {
                 }
         }
 
-        stage("Build Maven Project") 
-        {
-            steps 
-            {
-                echo "Building Maven Project.."
-                sh "mvn clean package"
-            }
-        }
-
         stage("Build Docker Image") {
             steps {
                 echo "Building Docker Image.."
@@ -96,4 +87,3 @@ sshagent(credentials: ['Tomcat-Server']) {
                 }
         }
 }
-
