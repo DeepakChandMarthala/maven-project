@@ -16,10 +16,10 @@ RUN ls -l webapp/target/
 #RUN ls -l /usr/local/tomcat/webapps
 
 FROM tomcat:latest
-RUN sed -i 's/8050/8050/' /usr/local/tomcat/conf/server.xml
+RUN sed -i 's/8060/8060/' /usr/local/tomcat/conf/server.xml
 COPY --from=build /app/webapp/target/*.war /usr/local/tomcat/webapps/
 #COPY webapp/target/*.war /usr/local/tomcat/webapps
 RUN pwd
 
-EXPOSE 8050
+EXPOSE 8060
 CMD ["catalina.sh", "run"]
