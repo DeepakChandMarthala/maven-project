@@ -62,7 +62,7 @@ pipeline {
 sshagent(credentials: ['Tomcat-Server']) {
     withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
         sh '''
-            ssh -v -o StrictHostKeyChecking=no -l ubuntu 18.210.14.68 \
+            ssh -v -o StrictHostKeyChecking=no -l ubuntu 100.25.110.32 \
             'uname -a && \
             whoami && \
             echo logged into the node-server && \
