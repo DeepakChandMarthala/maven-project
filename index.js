@@ -24,7 +24,7 @@ const port = 3000;
 
 // Default route
 app.get('/', (req, res) => {
-  res.send('"This is DevOps Project done as a group by\nBhavani\nShravya\nVakula\nDeepak"');
+  res.send('This is DevOps Project done as a group by<br>Bhavani<br>Shravya<br>Vakula<br>Deepak');
 });
 
 // Health check route
