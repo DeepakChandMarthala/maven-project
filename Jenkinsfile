@@ -82,7 +82,21 @@ sshagent(credentials: ['Tomcat-Server']) {
                 }
             }
         }
+
         
+    stage("Run Tests") {
+
+        steps {
+
+            echo "Running tests..."
+
+            //sh "npm install" // Install dependencies, if needed
+
+            sh "node test.js" // Run your test script
+
+            }
+
+        }  
     }
 
     post {
