@@ -89,6 +89,7 @@ sshagent(credentials: ['Tomcat-Server']) {
         steps {
 
             echo "Running tests..."
+            sh "whoami"
 
             sh "npm install" // Install dependencies, if needed
 
