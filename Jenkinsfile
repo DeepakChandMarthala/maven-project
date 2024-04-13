@@ -14,6 +14,17 @@ pipeline {
 
     stages
     {
+        stage('Pre-Test Diagnostics') 
+         {
+            steps 
+             {
+                sh 'which node'
+                sh 'which npm'
+                sh 'node --version'
+                sh 'npm --version'
+              }
+            }
+
        stage("Git Checkout") 
         {
             steps {
