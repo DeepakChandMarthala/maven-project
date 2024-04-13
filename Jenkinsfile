@@ -90,7 +90,7 @@ sshagent(credentials: ['Tomcat-Server']) {
 
             echo "Running tests..."
 
-            //sh "npm install" // Install dependencies, if needed
+            sh "npm install" // Install dependencies, if needed
 
             sh "node test.js" // Run your test script
 
