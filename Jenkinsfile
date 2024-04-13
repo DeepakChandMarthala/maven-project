@@ -11,8 +11,8 @@ pipeline {
         DOCKER_USERNAME = 'deepakchandmarthala'
         PASSWORD = 'Deepak@240199'
         // Set the PATH environment variable to include the Node and npm directory
-        PATH = "/home/ubuntu/.nvm/versions/node/v20.12.2/bin:$PATH"
-        //PATH = "/usr/bin:$PATH"
+        //PATH = "/home/ubuntu/.nvm/versions/node/v20.12.2/bin:$PATH"
+        PATH = "/usr/bin:$PATH"
     }
 
     stages
