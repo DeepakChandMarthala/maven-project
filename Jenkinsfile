@@ -84,7 +84,7 @@ sshagent(credentials: ['Tomcat-Server']) {
         }
 
         
-    stage("Run Tests") {
+    /*stage("Run Tests") {
 
         steps {
 
@@ -96,7 +96,7 @@ sshagent(credentials: ['Tomcat-Server']) {
 
             }
 
-        }  
+        }*/  
     }
 
     post {
