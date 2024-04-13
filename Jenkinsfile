@@ -32,7 +32,7 @@ pipeline {
                 echo "Building Docker Image.."
                 script {
                     DOCKER_IMAGE = "${REGISTRY}:${TAG}"
-                    sh "sudo npm run test"
+                    sh "npm run test"
                     sh "docker build -t ${DOCKER_IMAGE} ."
                 }
             }
