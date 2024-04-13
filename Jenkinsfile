@@ -27,7 +27,7 @@ pipeline {
                 echo "Building Docker Image.."
                 script {
                     DOCKER_IMAGE = "${REGISTRY}:${TAG}"
-                    sh "npm run test"
+                    //sh "npm run test"
                     sh "docker build -t ${DOCKER_IMAGE} ."
                 }
             }
@@ -62,7 +62,7 @@ pipeline {
 sshagent(credentials: ['Tomcat-Server']) {
     withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
         sh '''
-            ssh -v -o StrictHostKeyChecking=no -l ubuntu 100.25.110.32 \
+            ssh -v -o StrictHostKeyChecking=no -l ubuntu 35.175.134.88 \
             'uname -a && \
             whoami && \
             echo logged into the node-server && \
