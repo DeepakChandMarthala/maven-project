@@ -24,7 +24,7 @@ const port = 3000;
 
 // Default route
 app.get('/', (req, res) => {
-  res.send('Hello World2!');
+  res.send('"This is DevOps Project done as a group by\nBhavani\nShravya\nVakula\nDeepak"');
 });
 
 // Health check route
@@ -33,9 +33,9 @@ app.get("/health", (_req, res) => {
 });
 
 // New route for the custom message
-app.get('/devops', (_req, res) => {
-  res.send("This is DevOps Project done as a group by\nBhavani\nShravya\nVakula\nDeepak");
-});
+//app.get('/devops', (_req, res) => {
+ // res.send("This is DevOps Project done as a group by\nBhavani\nShravya\nVakula\nDeepak");
+//});
 
 // Start the server
 const server = app.listen(port, () => {
