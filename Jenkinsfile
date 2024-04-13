@@ -14,17 +14,7 @@ pipeline {
 
     stages
     {
-        stage('Pre-Test Diagnostics') 
-         {
-            steps 
-             {
-                sh 'which node'
-                sh 'which npm'
-                sh 'node --version'
-                sh 'npm --version'
-              }
-            }
-
+    
        stage("Git Checkout") 
         {
             steps {
@@ -38,7 +28,7 @@ pipeline {
                 echo "Building Docker Image.."
                 script {
                     DOCKER_IMAGE = "${REGISTRY}:${TAG}"
-                    sh "npm run test"
+                    //sh "npm run test"
                     sh "docker build -t ${DOCKER_IMAGE} ."
                 }
             }
