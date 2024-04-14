@@ -32,10 +32,10 @@ pipeline {
                 }
             }
         }
-    }
-}
+    
 
-       /* stage("Login to Docker Registry") {
+
+       stage("Login to Docker Registry") {
             steps {
                 echo "Logging in to Docker Registry.."
                 script {
@@ -45,8 +45,10 @@ pipeline {
                 }
             }
         }
+    }
+}
 
-        stage("Push Docker Image to Registry") {
+       /* stage("Push Docker Image to Registry") {
             steps {
                 echo "Pushing Docker Image to Registry.."
                 sh "docker push ${DOCKER_IMAGE}"
