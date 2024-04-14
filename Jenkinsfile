@@ -54,11 +54,11 @@ pipeline {
                 sh "docker push ${DOCKER_IMAGE}"
             }
         }
-    }
-}
+    
+
         
 
-        /*stage("Deploy in EC2") {
+        stage("Deploy in EC2") {
             steps {
                 script {
                     sshagent(credentials: ['Tomcat-Server']) {
@@ -88,4 +88,4 @@ pipeline {
         }
     }
 }
-*/
+
