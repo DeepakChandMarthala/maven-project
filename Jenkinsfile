@@ -61,7 +61,7 @@ pipeline {
         stage("Deploy in EC2") {
             steps {
                 script {
-                    sshagent(credentials: ['Tomcat-Server']) {
+                    sshagent(credentials: ['Deploy-Server']) {
                         withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                             sh '''
                                 ssh -v -o StrictHostKeyChecking=no -l ubuntu 35.153.98.177 \
