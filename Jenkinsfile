@@ -1,4 +1,4 @@
-/*pipeline {
+pipeline {
     agent any
 
     environment {
@@ -80,58 +80,3 @@
         }
     }
 }
-*/
-
-pipeline {
-    agent any
-
-    options {
-        buildDiscarder(logRotator(numToKeepStr: '20'))  // Keeps only the last 20 builds
-    }
-
-    environment {
-        CONTAINER_NAME = "mycontainer-${BUILD_ID}"
-        REGISTRY = "deepakchandmarthala/maven-project"
-        TAG = "latest"
-        REGISTRY_CREDENTIAL = 'docker-hub'
-        DOCKER_IMAGE = ''
-        SONAR_URL = "http://100.25.136.178:9000"
-    }
-
-    stages {
-        stage("Git Checkout") {
-            steps {
-                echo "Retrieving Code.."
-                git 'https://github.com/DeepakChandMarthala/maven-project.git'
-            }
-        }
-
-        stage('Static Code Analysis') {
-            steps {
-                script {
-                    withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_TOKEN')]) {
-                        sh "sonar-scanner \
-                            -Dsonar.projectKey=MyNodeProject \
-                            -Dsonar.sources=. \
-                            -Dsonar.host.url=${SONAR_URL} \
-                            -Dsonar.login=${SONAR_TOKEN}"
-                    }
-                }
-            }
-        }
-
-        stage("Build Docker Image") {
-            steps {
-                echo "Building Docker Image.."
-                script {
-                    DOCKER_IMAGE = "${REGISTRY}:${TAG}"
-                    sh "docker build -t ${DOCKER_IMAGE} ."
-                }
-            }
-        }
-
-        stage("Login to Docker Registry") {
-            steps {
-                echo "Logging in to Docker Registry.."
-                script {
-                    withCredentials([usernamePassword(credentialsId: REGISTRY_CREDENTIAL, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
