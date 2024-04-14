@@ -84,7 +84,7 @@ pipeline {
             echo "Cleaning up..."
             sh "docker logout"
             // Optional: Uncomment the next line to prune Docker artifacts after build
-            // sh "docker system prune -a -f"
+            sh "docker system prune -a -f"
         }
     }
 }
