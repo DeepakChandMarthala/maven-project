@@ -45,17 +45,20 @@ pipeline {
                 }
             }
         }
-    }
-}
+    
 
-       /* stage("Push Docker Image to Registry") {
+
+       stage("Push Docker Image to Registry") {
             steps {
                 echo "Pushing Docker Image to Registry.."
                 sh "docker push ${DOCKER_IMAGE}"
             }
         }
+    }
+}
+        
 
-        stage("Deploy in EC2") {
+        /*stage("Deploy in EC2") {
             steps {
                 script {
                     sshagent(credentials: ['Tomcat-Server']) {
